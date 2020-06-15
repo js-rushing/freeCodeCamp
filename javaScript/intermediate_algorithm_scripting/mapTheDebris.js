@@ -1,3 +1,4 @@
+document.getElementById('unitTitle').innerHTML = "Intermediate Algorithm Scripting";
 document.getElementById('pageTitle').innerHTML = "Map the Debris";
 
 // Challenge
