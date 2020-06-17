@@ -44,8 +44,9 @@ document.getElementById('pageTitle').innerHTML = "Cash Register";
 function checkCashRegister(price, cash, cid) {
     var cidTotal = ((cid[0][1]) + (cid[1][1]) + (cid[2][1]) + (cid[3][1]) + (cid[4][1]) + (cid[5][1]) + (cid[6][1]) + (cid[7][1]) + (cid[8][1])),
         correctChange = (cash - price),
-        currentTotal,
-        penny = .01,
+        // makeTheChange = [],
+        currentTotal;
+    penny = .01,
         nickel = .05,
         dime = .1,
         quarter = .25,
@@ -63,11 +64,16 @@ function checkCashRegister(price, cash, cid) {
         dimes = 0,
         nickels = 0,
         pennys = 0,
+        changeTotal = 0,
         changeArr = [],
-        multiplier,
-        drawerStatus = "OPEN";
+        drawerStatus = "OPEN",
+        enough = true;
 
     const coinArr = ["ONE HUNDRED", "TWENTY", "TEN", "FIVE", "ONE", "QUARTER", "DIME", "NICKEL", "PENNY"];
+
+    // const theStatus = (cidTotal) => cidTotal == (correctChange) ? "CLOSED" : cidTotal > (correctChange) ? "OPEN" : "INSUFFICIENT_FUNDS";
+
+    // const theChangeIs = (currentTotal) => currentTotal >= 100 ? hundreds = calculate(currentTotal, hundred) : currentTotal >= 20 ? twentys = calculate(currentTotal, twenty) : currentTotal >= 10 ? tens = calculate(currentTotal, ten) : currentTotal >= 5 ? fives = calculate(currentTotal, five) : currentTotal >= one ? ones = calculate(currentTotal, one) : currentTotal >= quarter ? quarters = calculate(currentTotal, quarter) : currentTotal >= dime ? dimes = calculate(currentTotal, dime) : currentTotal >= nickel ? nickels = calculate(currentTotal, nickel) : currentTotal >= penny ? pennys = calculate(currentTotal, penny) : currentTotal = 0;
 
     function Drawer(cid) {
         this.penny = cid[0][1] / penny,
@@ -81,12 +87,48 @@ function checkCashRegister(price, cash, cid) {
             this.hundred = cid[8][1] / hundred
     };
 
-    let newDrawer = new Drawer(cid);
+    // function Cashback() {
+    //     this.pennys = pennys,
+    //         this.nickels = nickels,
+    //         this.dimes = dimes,
+    //         this.quarters = quarters,
+    //         this.ones = ones,
+    //         this.fives = fives,
+    //         this.tens = tens,
+    //         this.twentys = twentys,
+    //         this.hundreds = hundreds
+    // };
 
+    // function calculate(correctChange, coin) {
+    //     let mod = (Math.round(Math.trunc((correctChange % coin) * 1000) / 10)) / 100;
+    //     console.log(mod);
+    //     let coins = (Math.round(Math.trunc(((correctChange - (mod)) / coin) * 1000) / 10) / 100);
+    //     currentTotal = (Math.round(Math.trunc((currentTotal - (coins * coin)) * 1000) / 10) / 100);
+    //     return coins;
+    // }
+
+    // do {
+    //     console.log(currentTotal);
+    //     theChangeIs(currentTotal);
+    // } while (currentTotal > 0);
+
+    // changeTotal = ((hundreds*hundred)+(twentys*twenty)+(tens*ten)+(fives*five)+(ones*one)+(quarters*quarter)+(dimes*dime)+(nickels*nickel)+(pennys*penny));
+
+    // let cashReturned = new Cashback();
+    // console.log(cashReturned);
+
+
+    // function yourChange() {
+    //     this.status = theStatus(cidTotal),
+    //         this.change = getTheChange(correctChange, newDrawer)
+    // };
+
+    let newDrawer = new Drawer(cid);
+    
     function getTheChange(correctChange, newDrawer) {
         currentTotal = correctChange * 100;
         if (currentTotal >= 10000) {
-            while (currentTotal >= 10000 && newDrawer.hundred != 0) {
+            while (currentTotal >= 10000 && newDrawer.hundred != 000) {
                 hundreds += 1;
                 currentTotal -= 10000;
                 newDrawer.hundred -= 1;
@@ -201,8 +243,9 @@ function checkCashRegister(price, cash, cid) {
             drawerStatus = "CLOSED";
             finalChangeArr = cid;
         }
-        return { status: drawerStatus, change: finalChangeArr };
+        return {status: drawerStatus, change: finalChangeArr};
     }
+    
     return getTheChange(correctChange, newDrawer);
 }
 
