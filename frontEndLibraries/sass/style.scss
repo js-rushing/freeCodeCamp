@@ -1,0 +1,109 @@
+$text-color: red;
+
+// this mixin will be imported from _mixins.scss
+@mixin borders($thickness) {
+    @if $thickness==thick {
+        border: solid slategray 10px;
+    }
+
+    @else if $thickness==medium {
+        border: solid slategray 5px;
+    }
+
+    @else if $thickness==thin {
+        border: solid slategray 1px;
+    }
+
+    @else {
+        border: none;
+    }
+}
+
+// @import 'mixins'; // can't get this to work with online compiler
+
+.header {
+    text-align: center;
+}
+
+.blog-post {
+    color: $text-color;
+
+    h2 {
+        text-align: center;
+        color: blue;
+    }
+
+    p {
+        font-size: 20px;
+    }
+}
+
+// mixins & if else logic & each loop
+@each $bgcolor in red,
+green,
+blue {
+    .#{$bgcolor}-bg {
+        background-color: $bgcolor;
+    }
+}
+
+.boxes {
+    padding: 0px;
+}
+
+.box {
+    font-weight: bold;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+}
+
+#box1 {
+    color: white;
+    @include borders(thin);
+}
+
+#box2 {
+    color: white;
+    @include borders(medium);
+}
+
+#box3 {
+    color: white;
+    @include borders(thick);
+}
+
+// for loop
+// @for $j from 1 to 6 {
+//     .text-#{$j} {
+//         font-size: 15px * $j;
+//     }
+// }
+
+// while loop
+// this code functionally does the same thing as the for loop code
+$x: 1;
+
+@while $x < 6 {
+    .text-#{$x} {
+        font-size: 15px * $x;
+    }
+
+    $x: $x+1; // avoid infinite loop!!!    
+}
+
+// extends
+h3 {
+    text-align: center;
+}
+
+.info {
+    width: 200px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.info-important {
+    @extend .info;
+    background-color: magenta;
+}

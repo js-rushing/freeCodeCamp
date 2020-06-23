@@ -1,0 +1,14 @@
+@mixin borders($thickness) {
+    @if $thickness == thick {
+        border: solid slategray 10px;
+    }
+    @else if $thickness == medium {
+        border: solid slategray 5px;
+    }
+    @else if $thickness == thin {
+        border: solid slategray 1px;
+    }
+    @else {
+        border: none;
+    }
+}
