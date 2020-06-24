@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title id="pagetitle">Document</title>
 </head>
 
 <body>
@@ -56,7 +56,22 @@
         <div class="info">
             <p>This is a simple post. It has basic styling and can be extended for other uses.</p>
         </div>
+
+        <div id="like_button_container">
+        </div>
+
     </div>
+    
+    <!-- My own local vanilla javaScript file -->
+    <script src="script.js"></script>
+
+    <!-- Load React -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js" -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component -->
+    <script src="like_button.js"></script>
 </body>
 
 </html>
